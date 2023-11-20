@@ -6,7 +6,8 @@ const PORT = 8500;
 //*Import functions/routes
 const connectDB = require("./config/database")
 const homeRoutes = require("./routes/home")
-// const editRoutes = require("./routes/edit")
+const editRoutes = require("./routes/edit")
+const archiveRoutes = require("./routes/archive")
 
 require('dotenv').config({path: './config/.env'})
 
@@ -22,7 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //Set Routes
 app.use('/', homeRoutes)
-// app.use('/edit', editRoutes)
+app.use('/edit', editRoutes)
+app.use('/archive', archiveRoutes)
 
 //Start Server
 app.listen(process.env.PORT || PORT, () => console.log(`Server running on port ${PORT}`));

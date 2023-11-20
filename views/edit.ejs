@@ -6,39 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Item</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-    <section>
-        <h1><h1>This is the Edit Page!</h1></h1>
-        <section>
-            <ul>
-                <% itemList.forEach(item => { %>
-                    <% if (item._id==idItem) { %>
-                        <li>
-                            <form action="/edit/update/<%= item._id %>" method="POST">
-                                <label for="textinput">Input Text</label>
-                                <input type="text" value="<%= item.textinput %>" name="textinput">
-                                <br>
-                                <label for="numinput">Input Number</label>
-                                <input type="number" value="<%= item.numinput %>" name="numinput">
-                                <br>
+    <section class="todo-container">
+        <h2>Edit List Item</h2>
+        <section class="todo">
+            <ul class="todo-list">
+                <% Classes.forEach(details=> { %>
+                    <% if (details._id==classId ) { %>
+                        <li class="todo-list-item">
+                            <form action="/edit/<%= details._id %>" method="POST">
+                                <input type="text" name="name" value="<%= details.name %>">
+                                <input type="date" name="classDate" value="<%= details.classDate %>">
+                                <input type="number" name="rate" value="<%= details.rate %>">
+                                <input type="text" name="topic" value="<%= details.topic %>">
+                                
+                                <textarea rows="6" cols="45" name="pros"><%= details.pros %></textarea>
+                                <textarea rows="6" cols="45" name="cons"><%= details.cons %></textarea>
+                                <input type="text" name="homework" value="<%= details.homework %>">
+
                                 <button type="submit" class="confirm">Confirm</button>
                                 <a href="/" class="cancel">Cancel</a>
                             </form>
                         </li>
-                        <% } else { %>
-                            <li>
-                                <div>
-                                    <%= item.textinput %>
-                                </div>
-                                <div>
-                                    <%= item.numinput %>
-                                </div>
-                                <a href="/edit/<%= item._id %>">Edit</a>
-                                <a href="/edit/remove/<%= item._id %>" class="remove">Cancel</a>
-                            </li>
-                            <% } %>
-                                <% }) %>
+                    <% } if (details.paid==classPaid){ %>
+                        <li class="todo-list-item">
+                            <div class="todo-list-item-title">
+                                <%= details.name %>
+                            </div>
+                            <div class="todo-list-item-title">
+                                <%= details.classDate %>
+                            </div>
+                            <div class="todo-list-item-title">
+                                <%= details.rate %>
+                            </div>
+                            <div class="todo-list-item-title">
+                                <%= details.topic %>
+                            </div>
+                            <div class="todo-list-item-content">
+                                <%= details.pros %>
+                            </div>
+                            <div class="todo-list-item-content">
+                                <%= details.cons %>
+                            </div>
+                            <div class="todo-list-item-title">
+                                <%= details.homework %>
+                            </div>
+                            <a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span>
+                            </a>
+                            <a href="/edit/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>
+                            </a>
+                        </li>
+                    <% } %>
+                <% }) %>
             </ul>
         </section>
     </section>

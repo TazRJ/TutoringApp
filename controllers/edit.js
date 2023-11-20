@@ -1,12 +1,13 @@
-const ItemList = require('../models/classlist')
+const classlist = require('../models/classlist')
 
 module.exports = {
     getEdit: async (req,res) =>  {
         const id = req.params.id
+        const paid = req.params.paid
         console.log(id)
         try {
-            const items = await ItemList.find()
-            res.render("edit.ejs", {itemList: items, idItem: id})
+            const classes = await classlist.find()
+            res.render("edit.ejs", {Classes: classes, classId: id, classPaid: paid})
         } catch (err) {
             if (err) return res.status(500).send(err)
         }
@@ -14,7 +15,7 @@ module.exports = {
     deleteItem: async (req,res) => {
         const id = req.params.id
         try {
-            const result = await ItemList.findByIdAndDelete(id)
+            const result = await classlist.findByIdAndDelete(id)
             console.log(result)
             res.redirect('back')
         } catch (err) {
@@ -24,11 +25,16 @@ module.exports = {
     updateItem: async (req,res) => {
         const id = req.params.id
         try {
-            await ItemList.findByIdAndUpdate(
+            await classlist.findByIdAndUpdate(
                id,
                {
-                textinput: req.body.textinput,
-                numinput: req.body.numinput
+                name: req.body.name,
+                classDate: req.body.classDate,
+                rate: req.body.rate,
+                topic: req.body.topic,
+                pros: req.body.pros,
+                cons: req.body.cons,
+                homework: req.body.homework,
                 },
             )
             res.redirect('/');

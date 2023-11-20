@@ -18,35 +18,22 @@
     <section class="todo-container">
         <h1>Tutor Management</h1>
         <section class="todo">
-            <form action="/" method="POST" class="todo-header">
-                <input type="text" name="name" placeholder="Student Name">
-                <input type="date" name="classDate" placeholder="Class Date">
-                <input type="number" name="rate" placeholder="Rate">
-                <input type="text" name="topic" placeholder="Topic">
-                <textarea rows="6" cols="45" name="pros" placeholder="What went well"></textarea>
-                <textarea rows="6" cols="45" name="cons" placeholder="What to improve"></textarea>
-                <input type="text" name="homework" placeholder="Homework">
-                <button type="submit"><span>Add Task</span></button>
-            </form>
-            <a href="/archive">Archive Menu</a>
-
+            <a href="/">Main Menu</a>
             <ul class="todo-list">
                 <% Classes.forEach(details => { %>
-                    
-                    <% if(details.paid === false) { %>
+                    <% if(details.paid === true) { %>
                         <li class="todo-list-item">
                             <div>
                                 <div class="todo-list-item-title"><%= details.classDate %></div>
                                 <div class="todo-list-item-title"><%= details.name %></div>
                             </div>
-                            <form action="/archive/<%= details._id %>" method="POST">
-                                <input type="checkbox" name="paid" onchange="this.form.submit()" >
+                            <form action="/archive/notPaid/<%= details._id %>" method="POST">
+                                <input type="checkbox" name="paid" onchange="this.form.submit()" checked>
                             </form>
                             <a href="/edit/<%= details._id %>/<%= details.paid %>" class="edit"><span class="fas fa-edit"></span></a>
                             <a href="/edit/remove/<%= details._id %>" class="remove"><span class="fas fa-times"></span></a>
-                        </li> 
+                        </li>   
                     <% } %> 
-                        
                 <% }) %>
             </ul>
         </section>
