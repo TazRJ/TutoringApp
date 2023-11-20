@@ -31,7 +31,7 @@
                                 <input type="checkbox" name="paid" onchange="this.form.submit()" checked>
                             </form>
                             <a href="/edit/<%= details._id %>/<%= details.paid %>" class="edit"><span class="fas fa-edit"></span></a>
-                            <a href="/edit/remove/<%= details._id %>" class="remove"><span class="fas fa-times"></span></a>
+                            <a href="/edit/edit/remove/<%= details._id %>" class="remove"><span class="fas fa-times"></span></a>
                         </li>   
                     <% } %> 
                 <% }) %>

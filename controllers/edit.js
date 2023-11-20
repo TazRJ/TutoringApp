@@ -12,20 +12,18 @@ module.exports = {
             if (err) return res.status(500).send(err)
         }
     },
-    deleteItem: async (req,res) => {
+    deleteClass : (req,res) => {
         const id = req.params.id
-        try {
-            const result = await classlist.findByIdAndDelete(id)
-            console.log(result)
-            res.redirect('back')
-        } catch (err) {
-            if (err) return res.status(500).send(err)
-        } 
+        console.log(id)
+        classlist.findByIdAndRemove(id, err => {
+            if (err) return res.send(500, err)
+            res.redirect("/");
+        });
     },
-    updateItem: async (req,res) => {
+    updateClass : (req,res) => {
         const id = req.params.id
         try {
-            await classlist.findByIdAndUpdate(
+            classlist.findByIdAndUpdate(
                id,
                {
                 name: req.body.name,

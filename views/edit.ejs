@@ -19,7 +19,7 @@
                 <% Classes.forEach(details=> { %>
                     <% if (details._id==classId ) { %>
                         <li class="todo-list-item">
-                            <form action="/edit/<%= details._id %>" method="POST">
+                            <form action="/edit/update/<%= details._id %>" method="POST">
                                 <input type="text" name="name" value="<%= details.name %>">
                                 <input type="date" name="classDate" value="<%= details.classDate %>">
                                 <input type="number" name="rate" value="<%= details.rate %>">
@@ -56,9 +56,9 @@
                             <div class="todo-list-item-title">
                                 <%= details.homework %>
                             </div>
-                            <a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span>
+                            <a href="/edit/<%= details._id %>/<%= details.paid %>" class="edit"> <span class="fas fa-edit"></span>
                             </a>
-                            <a href="/edit/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>
+                            <a href="/edit/edit/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>
                             </a>
                         </li>
                     <% } %>

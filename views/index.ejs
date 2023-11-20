@@ -33,7 +33,7 @@
             <ul class="todo-list">
                 <% Classes.forEach(details => { %>
                     
-                    <% if(details.paid === false) { %>
+                    <% if(details.paid == false) { %>
                         <li class="todo-list-item">
                             <div>
                                 <div class="todo-list-item-title"><%= details.classDate %></div>
@@ -43,14 +43,15 @@
                                 <input type="checkbox" name="paid" onchange="this.form.submit()" >
                             </form>
                             <a href="/edit/<%= details._id %>/<%= details.paid %>" class="edit"><span class="fas fa-edit"></span></a>
-                            <a href="/edit/remove/<%= details._id %>" class="remove"><span class="fas fa-times"></span></a>
-                        </li> 
+                            <a href="/edit/edit/remove/<%= details._id %>" class="remove">
+                                <span class="fas fa-times"></span>
+                            </a>
+                        </li>
                     <% } %> 
                         
                 <% }) %>
             </ul>
         </section>
     </section>
-    <script src="../public/home.js"></script>
 </body>
 </html>

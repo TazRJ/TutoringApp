@@ -3,7 +3,7 @@ const router = express.Router()
 const editController = require('../controllers/edit')
 
 router.get('/:id/:paid', editController.getEdit)
-router.get('/remove/:id', editController.deleteItem)
-router.post('/update/:id', editController.updateItem)
+router.get('/edit/remove/:id', editController.deleteClass)
+router.post('/update/:id', editController.updateClass)
 
 module.exports = router
