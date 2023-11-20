@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!--GOOGLE FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,16 +18,20 @@
     <section class="todo-container">
         <h1>Tutor Management</h1>
         <section class="todo">
-            <form action="/" method="POST" class="todo-header">
+            <form action="/" method="POST" class="todo-header" id="classDetails">
                 <input type="text" name="name" placeholder="Student Name">
                 <input type="date" name="classDate" placeholder="Class Date">
+
                 <input type="number" name="rate" placeholder="Rate">
+                
+                
                 <input type="text" name="topic" placeholder="Topic">
                 <textarea rows="6" cols="45" name="pros" placeholder="What went well"></textarea>
                 <textarea rows="6" cols="45" name="cons" placeholder="What to improve"></textarea>
                 <input type="text" name="homework" placeholder="Homework">
                 <button type="submit"><span>Add Task</span></button>
             </form>
+            <button onclick="copyToClipboard()">Copy</button>
             <a href="/archive">Archive Menu</a>
 
             <ul class="todo-list">
@@ -38,6 +42,7 @@
                             <div>
                                 <div class="todo-list-item-title"><%= details.classDate %></div>
                                 <div class="todo-list-item-title"><%= details.name %></div>
+                                <div class="todo-list-item-title">$<%= details.rate %></div>
                             </div>
                             <form action="/archive/<%= details._id %>" method="POST">
                                 <input type="checkbox" name="paid" onchange="this.form.submit()" >
@@ -53,5 +58,6 @@
             </ul>
         </section>
     </section>
+    <script src="js/home.js"></script>
 </body>
 </html>

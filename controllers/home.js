@@ -22,7 +22,6 @@ module.exports = {
             });
         try {
             await newClass.save();
-            console.log(newClass)
             res.redirect("/");
         } catch (err) {
             if (err) return res.status(500).send(err);

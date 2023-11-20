@@ -4,7 +4,6 @@ module.exports = {
     getEdit: async (req,res) =>  {
         const id = req.params.id
         const paid = req.params.paid
-        console.log(id)
         try {
             const classes = await classlist.find()
             res.render("edit.ejs", {Classes: classes, classId: id, classPaid: paid})
@@ -14,7 +13,6 @@ module.exports = {
     },
     deleteClass : (req,res) => {
         const id = req.params.id
-        console.log(id)
         classlist.findByIdAndRemove(id, err => {
             if (err) return res.send(500, err)
             res.redirect("/");

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!--GOOGLE FONT-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,11 +21,12 @@
             <a href="/">Main Menu</a>
             <ul class="todo-list">
                 <% Classes.forEach(details => { %>
-                    <% if(details.paid === true) { %>
+                    <% if(details.paid == true) { %>
                         <li class="todo-list-item">
                             <div>
                                 <div class="todo-list-item-title"><%= details.classDate %></div>
                                 <div class="todo-list-item-title"><%= details.name %></div>
+                                <div class="todo-list-item-title">$<%= details.rate %></div>
                             </div>
                             <form action="/archive/notPaid/<%= details._id %>" method="POST">
                                 <input type="checkbox" name="paid" onchange="this.form.submit()" checked>
