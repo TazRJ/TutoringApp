@@ -9,22 +9,24 @@
 </head>
 <body>
     <h1>This is the Home Page!</h1>
-    <form action="/new" method="POST">
-        <label for="textinput">Input Text</label>
-        <input type="text" name="textinput">
-        <br>
-        <label for="numinput">Input Number</label>
-        <input type="number" name="numinput" value=0>
-        <br>
-        <button type="submit">Add item</button>
+    <form action="/" method="POST">
+        <input type="text" name="name" placeholder="Student Name">
+        <input type="date" name="classDate" placeholder="Class Date">
+        <input type="number" name="rate" placeholder="Rate">
+        <input type="text" name="topic" placeholder="Topic">
+        <textarea rows="6" cols="45" name="pros" placeholder="What went well"></textarea>
+        <textarea rows="6" cols="45" name="cons" placeholder="What to improve"></textarea>
+        <input type="text" name="homework" placeholder="Homework">
+        <button type="submit"><span>Add Task</span></button>
     </form>
     <ul>
-        <% itemList.forEach(item => { %>
+        <% Classes.forEach(details => { %>
             <li>
-                <div><%= item.textinput %></div>
-                <div><%= item.numinput %></div>
-                <a href="/edit/<%= item._id %>">Edit</a>
-                <a href="/edit/remove/<%= item._id %>">Remove</a>
+                <div><%= details.classDate %></div>
+                <div><%= details.name %></div>
+                <div><%= details.paid %></div>
+                <a href="/edit/<%= details._id %>">Edit</a>
+                <a href="/edit/remove/<%= details._id %>">Remove</a>
             </li>
         <% }) %>
     </ul>

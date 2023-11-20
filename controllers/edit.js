@@ -1,4 +1,4 @@
-const ItemList = require('../models/ItemList')
+const ItemList = require('../models/classlist')
 
 module.exports = {
     getEdit: async (req,res) =>  {

@@ -1,24 +1,28 @@
-const ItemList = require('../models/ItemList')
+const classlist = require('../models/classlist')
 
 module.exports = {
     getIndex : async (req, res) => {
         try {
-            const items = await
-            ItemList.find()
-            res.render("index.ejs", { itemList: items });
+            const classes = await classlist.find()
+            res.render("index.ejs", { Classes: classes });
         } catch (err) {
             if (err) return res.status(500).send(err);
         }
     },
-    createItem: async (req, res) => {
-        const newItem = new ItemList(
+    createClass: async (req, res) => {
+        const newClass = new classlist(
             {
-                textinput: req.body.textinput,
-                numinput: req.body.numinput
+                name: req.body.name,
+                classDate: req.body.classDate,
+                rate: req.body.rate,
+                topic: req.body.topic,
+                pros: req.body.pros,
+                cons: req.body.cons,
+                homework: req.body.homework
             });
         try {
-            await newItem.save();
-            console.log(newItem)
+            await newClass.save();
+            console.log(newClass)
             res.redirect("/");
         } catch (err) {
             if (err) return res.status(500).send(err);
