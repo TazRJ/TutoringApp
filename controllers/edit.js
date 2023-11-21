@@ -18,10 +18,10 @@ module.exports = {
             res.redirect("/");
         });
     },
-    updateClass : (req,res) => {
+    updateClass : async (req,res) => {
         const id = req.params.id
         try {
-            classlist.findByIdAndUpdate(
+            await classlist.findByIdAndUpdate(
                id,
                {
                 name: req.body.name,
@@ -30,13 +30,15 @@ module.exports = {
                 topic: req.body.topic,
                 pros: req.body.pros,
                 cons: req.body.cons,
-                homework: req.body.homework,
+                homework: req.body.homework
                 },
+                { new: true }
             )
             res.redirect('/');
         } catch (err) {
             if (err) return res.status(500).send(err)
             res.redirect('/');
         } 
+        
     }
 }
