@@ -6,58 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="/css/style.css">
-    <!--GOOGLE FONT-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@500&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!--ICONS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-    <section class="todo-container">
-        <h1>Tutor Management</h1>
-        <section class="todo">
-            <form action="/" method="POST" class="todo-header" id="classDetails">
-                <input type="text" name="name" placeholder="Student Name">
-                <input type="date" name="classDate" placeholder="Class Date">
-
-                <input type="number" name="rate" placeholder="Rate">
-                
-                
-                <input type="text" name="topic" placeholder="Topic">
-                <textarea rows="6" cols="45" name="pros" placeholder="What went well"></textarea>
-                <textarea rows="6" cols="45" name="cons" placeholder="What to improve"></textarea>
-                <input type="text" name="homework" placeholder="Homework">
-                <button type="submit"><span>Add Task</span></button>
-            </form>
-            <button onclick="copyToClipboard()">Copy</button>
-            <a href="/archive">Archive Menu</a>
-
-            <ul class="todo-list">
-                <% Classes.forEach(details => { %>
-                    
-                    <% if(details.paid == false) { %>
-                        <li class="todo-list-item">
-                            <div>
-                                <div class="todo-list-item-title"><%= details.classDate %></div>
-                                <div class="todo-list-item-title"><%= details.name %></div>
-                                <div class="todo-list-item-title">$<%= details.rate %></div>
+    <section>
+        <h1>Student Management</h1>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <div class="btn-group justify-content-center">
+                    <a href="/" class="btn btn-primary active" aria-current="page">Home</a>
+                    <a href="/archive" class="btn btn-primary">Archive</a>  
+                </div>
+            </li>
+        </ul>
+        
+        <form action="/" method="POST" class="todo-header" id="classDetails">
+            <div class="form-floating mb-3">
+                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Student Name">
+                <label for="floatingInput">Student Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="date" name="classDate" class="form-control" id="floatingInput" placeholder="Class Date">
+                <label for="floatingInput">Class Date</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" name="rate" class="form-control" id="floatingInput" placeholder="Rate">
+                <label for="floatingInput">Rate</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="topic" class="form-control" id="floatingInput" placeholder="Topic">
+                <label for="floatingInput">Topic</label>
+            </div>
+            <div class="form-floating">
+                <textarea name="pros" class="form-control" placeholder="What went well?" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">What went well?</label>
+            </div>
+            <div class="form-floating">
+                <textarea name="cons" class="form-control" placeholder="What to improve?" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">What to improve?</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="homework" class="form-control" id="floatingInput" placeholder="Homework">
+                <label for="floatingInput">Homework</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+        <button type="button" class="btn btn-primary" onclick="copyToClipboard()">Copy</button>
+        <ul class="list-group">
+            <% Classes.forEach(details => { %>
+                <% if(details.paid == false) { %>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <form action="/archive/<%= details._id %>" method="POST">
+                                    <input class="form-check-input me-1" type="checkbox" name="paid" id="firstCheckbox" onchange="this.form.submit()">
+                                </form>
                             </div>
-                            <form action="/archive/<%= details._id %>" method="POST">
-                                <input type="checkbox" name="paid" onchange="this.form.submit()" >
-                            </form>
-                            <a href="/edit/<%= details._id %>/<%= details.paid %>" class="edit"><span class="fas fa-edit"></span></a>
-                            <a href="/edit/edit/remove/<%= details._id %>" class="remove">
-                                <span class="fas fa-times"></span>
-                            </a>
-                        </li>
-                    <% } %> 
-                        
-                <% }) %>
-            </ul>
-        </section>
+                            <div class="d-flex justify-content-between">
+                                <div class="p-2"><%= details.classDate %></div>
+                                <div class="p-2"><%= details.name %></div>
+                                <div class="p-2">$<%= details.rate %></div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <a href="/edit/<%= details._id %>/<%= details.paid %>" class="edit"><span class="fas fa-edit"></span></a>
+                                <a href="/edit/edit/remove/<%= details._id %>" class="remove">
+                                    <span class="fas fa-times"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                <% } %>   
+            <% }) %>
+        </ul>
     </section>
+    <!-- Compiled and minified JavaScript Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="js/home.js"></script>
 </body>
 </html>
