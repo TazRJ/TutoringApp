@@ -55,7 +55,8 @@
             </div>
             <button type="submit" class="btn btn-primary">Add Task</button>
         </form>
-        <button type="button" class="btn btn-primary" onclick="copyToClipboard()">Copy</button>
+        <button id="copyToClipboard" type="button" class="btn btn-primary">Copy</button>
+        <button type="button" class="btn btn-primary">Email</button>
         <ul class="list-group">
             <% Classes.forEach(details => { %>
                 <% if(details.paid == false) { %>

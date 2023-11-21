@@ -23,9 +23,12 @@
                 </div>
             </li>
         </ul>       
+        
         <ul class="list-group">
+            <% let noResults = true; %>
             <% Classes.forEach(details => { %>
                 <% if(details.paid == true) { %>
+                    <% noResults = false %>
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
@@ -48,6 +51,9 @@
                     </li>   
                 <% } %> 
             <% }) %>
+            <% if(noResults) { %>
+                <span class="d-flex justify-content-center">No results</span>
+            <% } %>
         </ul>
         
     </section>

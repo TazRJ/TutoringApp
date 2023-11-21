@@ -1,3 +1,5 @@
+document.querySelector('#copyToClipboard').addEventListener('click', copyToClipboard)
+
 function copyToClipboard() {
     var form = document.getElementById("classDetails");
     var output = "";
