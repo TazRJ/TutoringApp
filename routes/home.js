@@ -6,6 +6,8 @@ const router = express.Router()
 const homeController = require('../controllers/home')
 
 router.get('/', homeController.getIndex) //read
-router.post('/', homeController.createClass) //create
+router.post('/createClass', homeController.createClass) //create
+router.post('/markPaid/:id', homeController.markPaid)
+router.get('/remove/:id', homeController.deleteClass)
 
 module.exports = router

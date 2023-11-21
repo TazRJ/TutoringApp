@@ -41,3 +41,7 @@ section > button {
 .edit, .remove {
     margin-right: 10px;
 }
+
+#copyToClipboard {
+    margin-right: 10px;
+}

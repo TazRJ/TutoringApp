@@ -27,5 +27,26 @@ module.exports = {
             if (err) return res.status(500).send(err);
             res.redirect("/");
         }
+    },
+    markPaid: async (req,res) => {
+        const id = req.params.id
+        const paid = {paid: true}
+        try {
+            await classlist.findByIdAndUpdate(
+                id,
+                paid
+            )
+            res.redirect('/');
+        } catch (err) {
+            if (err) return res.status(500).send(err)
+            res.redirect('/');
+        } 
+    },
+    deleteClass : (req,res) => {
+        const id = req.params.id
+        classlist.findByIdAndRemove(id, err => {
+            if (err) return res.send(500, err)
+            res.redirect("/");
+        });
     }
 }
