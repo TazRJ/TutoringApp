@@ -13,6 +13,7 @@ module.exports = {
     },
     deleteClass : (req,res) => {
         const id = req.params.id
+        const paid = req.params.paid
         classlist.findByIdAndRemove(id, err => {
             if (err) return res.send(500, err)
             res.redirect("/");
