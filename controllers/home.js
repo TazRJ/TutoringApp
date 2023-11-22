@@ -10,18 +10,17 @@ module.exports = {
         }
     },
     createClass: async (req, res) => {
+        const newClass = new classlist(
+            {
+                name: req.body.name,
+                classDate: req.body.classDate,
+                rate: req.body.rate,
+                topic: req.body.topic,
+                pros: req.body.pros,
+                cons: req.body.cons,
+                homework: req.body.homework
+            });
         try {
-            await classlist.create(
-                {
-                    name: req.body.name,
-                    classDate: req.body.classDate,
-                    rate: req.body.rate,
-                    topic: req.body.topic,
-                    pros: req.body.pros,
-                    cons: req.body.cons,
-                    homework: req.body.homework
-                })
-            
             await newClass.save();
             res.redirect("/home");
         } catch (err) {
