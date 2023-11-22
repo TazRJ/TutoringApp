@@ -1,4 +1,4 @@
-const classlist = require('../models/classlist')
+const classlist = require('../models/Class')
 
 module.exports = {
     getEdit: async (req,res) =>  {
@@ -11,12 +11,11 @@ module.exports = {
             if (err) return res.status(500).send(err)
         }
     },
-    deleteClass : (req,res) => {
-        const id = req.params.id
-        const paid = req.params.paid
+    deleteClass : async (req,res) => {
+        const id = await req.params.id
         classlist.findByIdAndRemove(id, err => {
             if (err) return res.send(500, err)
-            res.redirect("/");
+            res.redirect("/home");
         });
     },
     updateClass : async (req,res) => {
@@ -35,10 +34,10 @@ module.exports = {
                 },
                 { new: true }
             )
-            res.redirect('/');
+            res.redirect('/home');
         } catch (err) {
             if (err) return res.status(500).send(err)
-            res.redirect('/');
+            res.redirect('/home');
         } 
         
     },
@@ -50,10 +49,10 @@ module.exports = {
                 id,
                 paid
             )
-            res.redirect('/');
+            res.redirect('/home');
         } catch (err) {
             if (err) return res.status(500).send(err)
-            res.redirect('/');
+            res.redirect('/home');
         } 
     },
     markNotPaid: async (req,res) => {
@@ -64,10 +63,10 @@ module.exports = {
                 id,
                 paid
             )
-            res.redirect('/');
+            res.redirect('/home');
         } catch (err) {
             if (err) return res.status(500).send(err)
-            res.redirect('/');
+            res.redirect('/home');
         } 
     }
 }

@@ -1,4 +1,4 @@
-const classlist = require('../models/classlist')
+const classlist = require('../models/Class')
 
 module.exports = {
     getIndex : async (req, res) => {

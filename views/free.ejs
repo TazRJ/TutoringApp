@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!--ICONS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+    <section>
+        <h1>Student Management</h1>
+        
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <div class="btn-group justify-content-center">
+                    <a href="/home" class="btn btn-primary active" aria-current="page">Home</a>
+                    <a href="/archive" class="btn btn-primary">Archive</a>  
+                </div>
+            </li>
+        </ul>
+        
+        <form action="/createClass" method="POST" id="classDetails">
+            <div class="form-floating mb-3">
+                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Student Name">
+                <label for="floatingInput">Student Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="date" name="classDate" class="form-control" id="floatingInput" placeholder="Class Date">
+                <label for="floatingInput">Class Date</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" name="rate" class="form-control" id="floatingInput" placeholder="Rate">
+                <label for="floatingInput">Rate</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="topic" class="form-control" id="floatingInput" placeholder="Topic">
+                <label for="floatingInput">Topic</label>
+            </div>
+            <div class="form-floating">
+                <textarea name="pros" class="form-control" placeholder="What went well?" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">What went well?</label>
+            </div>
+            <div class="form-floating">
+                <textarea name="cons" class="form-control" placeholder="What to improve?" id="floatingTextarea"></textarea>
+                <label for="floatingTextarea">What to improve?</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="homework" class="form-control" id="floatingInput" placeholder="Homework">
+                <label for="floatingInput">Homework</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+        <button id="copyToClipboard" type="button" class="btn btn-primary">Copy</button>
+        <button type="button" class="btn btn-primary">Email</button>
+        <a href="/">Back</a>
+    </section>
+    <!-- Compiled and minified JavaScript Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

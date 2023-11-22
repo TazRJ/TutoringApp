@@ -1,31 +1,32 @@
-const classlist = require('../models/classlist')
+const classlist = require('../models/Class')
 
 module.exports = {
-    getIndex : async (req, res) => {
+    getHome : async (req, res) => {
         try {
-            const classes = await classlist.find()
-            res.render("index.ejs", { Classes: classes });
+            const classes = await classlist.find({userId:req.user.id})
+            res.render("home.ejs", { Classes: classes, user: req.user });
         } catch (err) {
             if (err) return res.status(500).send(err);
         }
     },
     createClass: async (req, res) => {
-        const newClass = new classlist(
-            {
-                name: req.body.name,
-                classDate: req.body.classDate,
-                rate: req.body.rate,
-                topic: req.body.topic,
-                pros: req.body.pros,
-                cons: req.body.cons,
-                homework: req.body.homework
-            });
         try {
+            await classlist.create(
+                {
+                    name: req.body.name,
+                    classDate: req.body.classDate,
+                    rate: req.body.rate,
+                    topic: req.body.topic,
+                    pros: req.body.pros,
+                    cons: req.body.cons,
+                    homework: req.body.homework
+                })
+            
             await newClass.save();
-            res.redirect("/");
+            res.redirect("/home");
         } catch (err) {
             if (err) return res.status(500).send(err);
-            res.redirect("/");
+            res.redirect("/home");
         }
     },
     markPaid: async (req,res) => {
@@ -36,17 +37,17 @@ module.exports = {
                 id,
                 paid
             )
-            res.redirect('/');
+            res.redirect('/home');
         } catch (err) {
             if (err) return res.status(500).send(err)
-            res.redirect('/');
+            res.redirect('/home');
         } 
     },
-    deleteClass : (req,res) => {
-        const id = req.params.id
+    deleteClass : async (req,res) => {
+        const id = await req.params.id
         classlist.findByIdAndRemove(id, err => {
             if (err) return res.send(500, err)
-            res.redirect("/");
+            res.redirect("/home");
         });
     }
 }
