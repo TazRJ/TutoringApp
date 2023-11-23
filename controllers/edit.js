@@ -5,8 +5,8 @@ module.exports = {
         const id = req.params.id
         const paid = req.params.paid
         try {
-            const classes = await classlist.find()
-            res.render("edit.ejs", {Classes: classes, classId: id, classPaid: paid})
+            const classes = await classlist.find({userId:req.user.id})
+            res.render("edit.ejs", {Classes: classes, classId: id, classPaid: paid, userId:req.user.id})
         } catch (err) {
             if (err) return res.status(500).send(err)
         }
@@ -30,7 +30,8 @@ module.exports = {
                 topic: req.body.topic,
                 pros: req.body.pros,
                 cons: req.body.cons,
-                homework: req.body.homework
+                homework: req.body.homework,
+                userId:req.user.id
                 },
                 { new: true }
             )

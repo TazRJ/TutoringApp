@@ -36,6 +36,10 @@ homework: {
 paid: {
     type: Boolean,
     default: false
+},
+userId: {
+    type: String,
+    required: true
 }
 })
 

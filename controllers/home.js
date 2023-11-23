@@ -18,7 +18,8 @@ module.exports = {
                 topic: req.body.topic,
                 pros: req.body.pros,
                 cons: req.body.cons,
-                homework: req.body.homework
+                homework: req.body.homework,
+                userId: req.user.id
             });
         try {
             await newClass.save();

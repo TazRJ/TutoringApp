@@ -68,9 +68,7 @@
                                 <div class="d-flex align-items-center">
                                     <form action="/edit/markPaid/<%= details._id %>" method="POST">
                                     <% if (details.paid == false) { %>
-                                        
                                         <input class="form-check-input me-1" type="checkbox" name="paid" id="firstCheckbox" onchange="this.form.submit()">
-                                        
                                     <% } else { %>
                                         <input class="form-check-input me-1" type="checkbox" name="paid" id="firstCheckbox" onchange="this.form.submit()" checked>
                                     <% } %>
