@@ -34,7 +34,7 @@ section > ul, .nav-item {
     margin-bottom: 20px;
 }
 
-section > button {
+section > button, #logoutBtn {
     margin: 20px 0 10px 0;
 }
 
@@ -44,4 +44,8 @@ section > button {
 
 #copyToClipboard {
     margin-right: 10px;
+}
+
+#logoutBtn {
+    margin-left: 10px;
 }
