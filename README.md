@@ -4,6 +4,8 @@ This project is a full stack web development project using a MEN stack with a .e
 
 https://student-management-dl5c.onrender.com
 
+![student-management-dl5c onrender com_free](https://github.com/TazRJ/TutoringApp/assets/99307581/e7913848-ee1a-4840-9d26-c6306a5a2cdf)
+
 ## How It's Made:
 
 **Tech used:** EJS/HTML, CSS, JavaScript, Node.Js, Express, MongoDB Atlas, PassportJS and Sessions
