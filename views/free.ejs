@@ -12,7 +12,6 @@
 <body>
     <section>
         <h1>Student Management</h1>
-        
         <form action="/createClass" method="POST" id="classDetails">
             <div class="form-floating mb-3">
                 <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Student Name">
@@ -42,10 +41,9 @@
                 <input type="text" name="homework" class="form-control" id="floatingInput" placeholder="Homework">
                 <label for="floatingInput">Homework</label>
             </div>
-            <button type="submit" class="btn btn-primary">Add Task</button>
         </form>
         <button id="copyToClipboard" type="button" class="btn btn-primary">Copy</button>
-        <button type="button" class="btn btn-primary">Email</button>
+        <button type="button" class="btn btn-primary" id="emailCopy"><a href="mailto:?subject=Your%20Subject&body=Your%20Body"></a>Email</button>
         <a id="logoutBtn" class="btn btn-danger" href="/" role="button">Back</a>
     </section>
     <!-- Compiled and minified JavaScript Bootstrap -->

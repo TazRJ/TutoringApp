@@ -37,9 +37,17 @@ paid: {
     type: Boolean,
     default: false
 },
-userId: {
-    type: String,
-    required: true
+user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+},
+files: {
+    type: [String],
+    required: false
+},
+cloudinaryId: {
+    type: [String],
+    required: false
 }
 })
 
